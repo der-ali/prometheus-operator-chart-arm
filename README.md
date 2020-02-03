@@ -25,7 +25,7 @@ In order to deploy the helm-chart with the ARM compatible Docker images, you nee
 ```bash
 helm install prometheus-operator stable/prometheus-operator  --namespace monitor --set grafana.sidecar.image=4k1l/k8s-sidecar-arm:v0.1.20 --set kube-state-metrics.image.repository=4k1l/kube-state-metrics-arm --set kube-state-metrics.image.tag=v1.9.3 --set prometheusOperator.tlsProxy.image.repository=4k1l/ghostunnel-arm  --set prometheusOperator.admissionWebhooks.patch.image.repository=jettech/kube-webhook-certgen --set prometheusOperator.admissionWebhooks.patch.image.tag=v1.2.0 --set prometheusOperator.image.repository=maxromanovsky/prometheus-operator --set prometheusOperator.configmapReloadImage.repository=jimmidyson/configmap-reload --set prometheusOperator.configmapReloadImage.tag=v0.3.0 --set prometheusOperator.prometheusConfigReloaderImage.repository=maxromanovsky/prometheus-config-reloader --set prometheusOperator.hyperkubeImage.repository=gcr.io/google_containers/hyperkube-arm --set prometheusOperator.tlsProxy.enabled=false --set prometheusOperator.admissionWebhooks.enabled=false
 ```
-or you can use the provides values file - prometheus-operator.values
+or you can use the provided values file (prometheus-operator.values) :
 
 ```bash
 helm install prometheus-operator stable/prometheus-operator  --namespace monitor --values prometheus-operator.values --set prometheusOperator.tlsProxy.enabled=false --set prometheusOperator.admissionWebhooks.enabled=false
